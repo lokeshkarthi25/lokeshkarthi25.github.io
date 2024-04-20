@@ -20,7 +20,7 @@ let slideIndex=0;
 let interValId=null;
 
 // initialSlider()
-document.addEventListener("DOMContentLoaded",initialSlider){
+document.addEventListener("DOMContentLoaded",initialSlider)
 function initialSlider(){
     if(slides.length>0){
        slides[slideIndex].classList.add("displaySlide");
@@ -48,5 +48,4 @@ function prevSlide(){
 function nextSlide(){
      slideIndex++
      showSlide(slideIndex)
-}
 }
