@@ -15,37 +15,21 @@
 //     });
 // });
 
-const slides=document.querySelectorAll(".gallery img");
-let slideIndex=0;
-let interValId=null;
+let slideIndex = 0;
+showSlide(slideIndex);
 
-// initialSlider()
-document.addEventListener("DOMContentLoaded",initialSlider)
-function initialSlider(){
-    if(slides.length>0){
-       slides[slideIndex].classList.add("displaySlide");
-       interValId= setInterval(nextSlide,5000);
-      
-    }
+function nextSlide() {
+  showSlide(slideIndex += 1);
 }
-function showSlide(index){
-    if(index>=slides.length){
-         slideIndex=0;
-    }
-    else if(index<0){
-        slideIndex=slides.length-1
-    }
-    slides.forEach(slide=>{
-        slide.classList.remove("displaySlide")
-    })
-    slides[slideIndex].classList.add("displaySlide")
+
+function prevSlide() {
+  showSlide(slideIndex -= 1);
 }
-function prevSlide(){
-    clearInterval(interValId)
-      slideIndex--;
-      showSlide(slideIndex)
-}
-function nextSlide(){
-     slideIndex++
-     showSlide(slideIndex)
+
+function showSlide(n) {
+  const slides = document.querySelectorAll('.slides img');
+  if (n >= slides.length) { slideIndex = 0 }
+  if (n < 0) { slideIndex = slides.length - 1 }
+  slides.forEach(slide => slide.style.display = 'none');
+  slides[slideIndex].style.display = 'block';
 }
